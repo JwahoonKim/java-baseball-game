@@ -1,11 +1,13 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-// [V] 게임 시작
-// [V] 숫자 세팅
-// [V] 숫자 입력 받기
-// [V] 스트라이크, 볼 체크
-// [V] 게임 종료
+
+// [] 리팩토링
+    // [] UI와 핵심 로직 분리
+    // [] 함수 흐름 조정하기
+    // [] 단위 테스트가 어려운 부분 수정
+    // [] 클래스 단위로 분리하기
+// [] 모든 로직에 단위 테스트 만들기
 
 public class BaseballGame {
 
@@ -25,7 +27,7 @@ public class BaseballGame {
 
     private void init() {
         setNums();
-        System.out.println("nums = " + nums);
+//        System.out.println("nums = " + nums);
         while (!isEnd)
             start();
     }
@@ -43,6 +45,7 @@ public class BaseballGame {
     }
 
     private boolean wantToRestart() {
+        System.out.println("축하합니다!! 짞짞짞짞 다 맞췄어요.");
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt() == 1;
