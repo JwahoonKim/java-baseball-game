@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
+@DisplayName("String API Test")
 public class StringTest {
+
     @Test
     void replace() {
         String actual = "abc".replace("b", "d");
@@ -34,8 +36,8 @@ public class StringTest {
         assertThat(substring).isEqualTo("1,2");
     }
 
-    @Test
     @DisplayName("charAt method test")
+    @Test
     void charAt() {
         String actual = "abc";
         char c1 = actual.charAt(0);
@@ -43,7 +45,13 @@ public class StringTest {
 
         assertThat(c1).isEqualTo('a');
         assertThat(c2).isEqualTo('b');
-        assertThatThrownBy(() -> actual.charAt(3))
+
+        final int OUT_OF_BOUND_INDEX = 3;
+
+        assertThatThrownBy(() -> actual.charAt(OUT_OF_BOUND_INDEX))
                 .isInstanceOf(StringIndexOutOfBoundsException.class);
+
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+                .isThrownBy(() -> actual.charAt(OUT_OF_BOUND_INDEX));
     }
 }

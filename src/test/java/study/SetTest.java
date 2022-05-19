@@ -2,6 +2,7 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
 
+@DisplayName("Set Collection API Test")
 public class SetTest {
     private Set<Integer> numbers;
 
@@ -24,9 +26,11 @@ public class SetTest {
         numbers.add(3);
     }
 
+    @DisplayName("Set size() Test")
     @Test
     void size() {
-        assertThat(numbers.size()).isEqualTo(3);
+        final int expectedSize = 3;
+        assertThat(numbers.size()).isEqualTo(expectedSize);
     }
 
     @Test
@@ -44,11 +48,8 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:true","2:true","3:true","4:false", "5:false"}, delimiter = ':')
-    void contains2(String num, String expected ) {
-        int parseInt = Integer.parseInt(num);
-        assertThat(numbers.contains(parseInt)).isEqualTo(Boolean.parseBoolean(expected));
+    @CsvSource({"1,true","2,true","3,true","4,false", "5,false"})
+    void contains2(int num, boolean expected) {
+        assertThat(numbers.contains(num)).isEqualTo(expected);
     }
-
-
 }
