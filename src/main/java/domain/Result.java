@@ -2,8 +2,8 @@ package domain;
 
 public class Result {
     public static final int THREE_STRIKE = 3;
-    final int strike;
-    final int ball;
+    public final int strike;
+    public final int ball;
     boolean isEnd = false;
 
     public Result(int strike, int ball) {
@@ -16,5 +16,9 @@ public class Result {
 
     public boolean isOut() {
         return strike == 0 && ball == 0;
+    }
+
+    public boolean isEnd() {
+        return isEnd;
     }
 }
