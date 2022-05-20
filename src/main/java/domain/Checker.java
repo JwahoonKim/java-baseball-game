@@ -14,7 +14,7 @@ public class Checker {
     private static int strikeCount(Balls computer, Balls player) {
         int strike = 0;
         for (int i = 0; i < BALL_LENGTH; i ++) {
-            if(computer.getStatus(i, player) == BallStatus.STRIKE)
+            if(computer.getStatus(i, player).isStrike())
                 strike++;
         }
         return strike;
@@ -23,7 +23,7 @@ public class Checker {
     private static int ballCount(Balls computer, Balls player) {
         int ball = 0;
         for (int i = 0; i < BALL_LENGTH; i ++) {
-            if(computer.getStatus(i, player) == BallStatus.BALL)
+            if(computer.getStatus(i, player).isBall())
                 ball++;
         }
         return ball;
